@@ -1,0 +1,17 @@
+bfy_adapter.sf2_routing.routing: []
+
+services:
+
+  bfy_adapter.sf2_routing:
+    class: 'Butterfly\Adapter\Sf2Routing\Router'
+    arguments: [@butterfly.adapter.sf2_routing.routes]
+    calls:
+      - ['setRequest', [@butterfly.application.request]]
+    alias: router
+
+  bfy_adapter.sf2_routing.route_factory:
+    class: 'Butterfly\Adapter\Sf2Routing\RouteFactory'
+
+  bfy_adapter.sf2_routing.routes:
+    factoryMethod: [@bfy_adapter.sf2_routing.route_factory, createCollection]
+    arguments: [%bfy_adapter.sf2_routing.routing%]
