@@ -1,0 +1,24 @@
+{
+    "name": "butterfly/adapter-sf2-routing",
+    "type": "library",
+    "description": "Butterfly PHP. Sf2 Routing Adapter",
+    "keywords": ["routing"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marat Fakhertdinov",
+            "email": "marat.fakhertdinov@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+
+        "butterfly/app-request-response": "1.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Butterfly\\Adapter\\Sf2Routing\\": "src/",
+            "Butterfly\\Adapter\\Sf2Routing\\Tests\\": "tests/unit/"
+        }
+    }
+}
