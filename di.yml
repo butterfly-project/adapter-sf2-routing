@@ -14,3 +14,6 @@ services:
   bfy_adapter.sf2_routing.routes:
     factoryMethod: [@bfy_adapter.sf2_routing.route_factory, createCollection]
     arguments: [%bfy_adapter.sf2_routing.routing%]
+
+interfaces:
+  'Butterfly\Application\RequestResponse\Routing\IRouterAware': 'bfy_adapter.sf2_routing'
