@@ -6,7 +6,7 @@ services:
     class: 'Butterfly\Adapter\Sf2Routing\Router'
     arguments: [@bfy_adapter.sf2_routing.routes]
     calls:
-      - ['setRequest', [@butterfly.application.request]]
+      - ['setRequest', [@bfy_adapter.http_foundation.request]]
     alias: router
 
   bfy_adapter.sf2_routing.route_factory:
