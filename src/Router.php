@@ -6,6 +6,7 @@ use Butterfly\Application\RequestResponse\Routing\IRouter;
 use Butterfly\Application\RequestResponse\Routing\IRouterAware;
 use Butterfly\Component\DI\IInjector;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
@@ -19,14 +20,20 @@ class Router implements IRouter, IInjector
     protected $routes;
 
     /**
+     * @var string
+     */
+    protected $pathInfoOf404;
+
+    /**
      * @var Request
      */
     protected $request;
 
     /**
      * @param RouteCollection $routes
+     * @param string $pathInfoOf404
      */
-    public function __construct(RouteCollection $routes)
+    public function __construct(RouteCollection $routes, $pathInfoOf404)
     {
         $this->routes = $routes;
     }
@@ -45,7 +52,13 @@ class Router implements IRouter, IInjector
      */
     public function getActionCode(Request $request)
     {
-        $parameters = $this->getUrlMatcher()->matchRequest($request);
+        $urlMatcher = $this->getUrlMatcher();
+
+        try {
+            $parameters = $urlMatcher->matchRequest($request);
+        } catch (ResourceNotFoundException $e) {
+            $parameters = $urlMatcher->match($this->pathInfoOf404);
+        }
 
         $request->attributes->set('_route_params', $parameters);
         foreach ($parameters as $name => $value) {

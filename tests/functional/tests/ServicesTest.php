@@ -15,6 +15,7 @@ class ServicesTest extends BaseDiTest
     {
         return array(
             array('bfy_adapter.sf2_routing.routing', array()),
+            array('bfy_adapter.sf2_routing.path_info_of_404', '/'),
         );
     }
 
