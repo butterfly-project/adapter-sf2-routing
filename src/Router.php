@@ -35,7 +35,8 @@ class Router implements IRouter, IInjector
      */
     public function __construct(RouteCollection $routes, $pathInfoOf404)
     {
-        $this->routes = $routes;
+        $this->routes        = $routes;
+        $this->pathInfoOf404 = $pathInfoOf404;
     }
 
     /**
