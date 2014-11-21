@@ -1,11 +1,11 @@
 bfy_adapter.sf2_routing.routing:       []
-bfy_adapter.sf2_routing.pathInfoOf404: '/'
+bfy_adapter.sf2_routing.path_info_of_404: '/'
 
 services:
 
   bfy_adapter.sf2_routing:
     class: 'Butterfly\Adapter\Sf2Routing\Router'
-    arguments: [@bfy_adapter.sf2_routing.routes, '%bfy_adapter.sf2_routing.pathInfoOf404%']
+    arguments: [@bfy_adapter.sf2_routing.routes, '%bfy_adapter.sf2_routing.path_info_of_404%']
     calls:
       - ['setRequest', [@bfy_adapter.http_foundation.request]]
 
