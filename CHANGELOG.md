@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+1.1.0
+-----
+
+Changes:
+
+ * Updated dependencies sf2routing to version 2.6.*
+
 1.0.2
 -----
 
