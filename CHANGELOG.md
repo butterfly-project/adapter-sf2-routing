@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+1.2.0
+-----
+
+Changes:
+
+ * Update adapter to app-request-response version 1.1.0
+
 1.1.0
 -----
 

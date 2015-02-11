@@ -5,6 +5,9 @@ namespace Butterfly\Adapter\Sf2Routing;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
+/**
+ * @author Marat Fakhertdinov <marat.fakhertdinov@gmail.com>
+ */
 class RouteFactory
 {
     /**
