@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+1.2.1
+-----
+
+Changes:
+
+ * Added tags-test to functional tests
+
 1.2.0
 -----
 

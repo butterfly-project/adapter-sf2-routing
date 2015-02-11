@@ -18,6 +18,16 @@ class ServicesTest extends BaseDiTest
         );
     }
 
+    /**
+     * @dataProvider getDataForTestParameter
+     * @param string $parameterName
+     * @param mixed $expectedValue
+     */
+    public function testParameter($parameterName, $expectedValue)
+    {
+        $this->assertEquals($expectedValue, self::$container->getParameter($parameterName));
+    }
+
     public function getDataForTestService()
     {
         return array(
@@ -31,21 +41,29 @@ class ServicesTest extends BaseDiTest
     }
 
     /**
-     * @dataProvider getDataForTestParameter
-     * @param string $parameterName
-     * @param mixed $expectedValue
-     */
-    public function testParameter($parameterName, $expectedValue)
-    {
-        $this->assertEquals($expectedValue, self::$container->getParameter($parameterName));
-    }
-
-    /**
      * @dataProvider getDataForTestService
      * @param string $serviceName
      */
     public function testService($serviceName)
     {
         self::$container->get($serviceName);
+    }
+
+    public function getDataForTestTag()
+    {
+        return array(
+            array('bfy_app.routing', 1),
+        );
+    }
+
+    /**
+     * @dataProvider getDataForTestTag
+     * @param string $name
+     * @param int $count
+     */
+    public function testTag($name, $count)
+    {
+        $this->assertTrue(self::$container->hasTag($name));
+        $this->assertCount($count, self::$container->getServicesByTag($name));
     }
 }
