@@ -15,16 +15,18 @@ class ServicesTest extends BaseDiTest
     {
         return array(
             array('bfy_adapter.sf2_routing.routing', array()),
-            array('bfy_adapter.sf2_routing.path_info_of_404', '/'),
         );
     }
 
     public function getDataForTestService()
     {
         return array(
+            array('bfy_adapter.sf2_routing.request_context'),
             array('bfy_adapter.sf2_routing.route_factory'),
             array('bfy_adapter.sf2_routing.routes'),
-            array('bfy_adapter.sf2_routing'),
+            array('bfy_adapter.sf2_routing.url_generator'),
+            array('bfy_adapter.sf2_routing.url_matcher'),
+            array('bfy_adapter.sf2_routing.router'),
         );
     }
 
