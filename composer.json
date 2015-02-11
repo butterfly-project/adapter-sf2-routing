@@ -14,7 +14,7 @@
         "php": ">=5.3.3",
 
         "symfony/routing": "2.6.*",
-        "butterfly/app-request-response": "1.0.*"
+        "butterfly/app-request-response": "1.1.*"
     },
     "autoload": {
         "psr-4": {
