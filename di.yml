@@ -3,26 +3,26 @@ bfy_adapter.sf2_routing.routing: []
 services:
 
   bfy_adapter.sf2_routing.router:
-    class: 'Butterfly\Adapter\Sf2Routing\Router'
-    arguments: [@bfy_adapter.sf2_routing.url_matcher]
-    tags: 'bfy_app.routing'
+    class:      'Butterfly\Adapter\Sf2Routing\Router'
+    arguments:  ['@bfy_adapter.sf2_routing.url_matcher']
+    tags:       'bfy_app.routing'
 
   bfy_adapter.sf2_routing.url_matcher:
-    class: 'Symfony\Component\Routing\Matcher\UrlMatcher'
-    arguments: [@bfy_adapter.sf2_routing.routes, @bfy_adapter.sf2_routing.request_context]
+    class:      'Symfony\Component\Routing\Matcher\UrlMatcher'
+    arguments:  ['@bfy_adapter.sf2_routing.routes', '@bfy_adapter.sf2_routing.request_context']
 
   bfy_adapter.sf2_routing.url_generator:
-    class: 'Symfony\Component\Routing\Generator\UrlGenerator'
-    arguments: [@bfy_adapter.sf2_routing.routes, @bfy_adapter.sf2_routing.request_context]
+    class:      'Symfony\Component\Routing\Generator\UrlGenerator'
+    arguments:  ['@bfy_adapter.sf2_routing.routes', '@bfy_adapter.sf2_routing.request_context']
 
   bfy_adapter.sf2_routing.routes:
-    factoryMethod: [@bfy_adapter.sf2_routing.route_factory, createCollection]
-    arguments: [%bfy_adapter.sf2_routing.routing%]
+    factoryMethod:  ['@bfy_adapter.sf2_routing.route_factory, createCollection']
+    arguments:      ['%bfy_adapter.sf2_routing.routing%']
 
   bfy_adapter.sf2_routing.route_factory:
-    class: 'Butterfly\Adapter\Sf2Routing\RouteFactory'
+    class:      'Butterfly\Adapter\Sf2Routing\RouteFactory'
 
   bfy_adapter.sf2_routing.request_context:
-    class: 'Symfony\Component\Routing\RequestContext'
+    class:      'Symfony\Component\Routing\RequestContext'
     calls:
-      - ['fromRequest', [@bfy_adapter.http_foundation.request]]
+      - ['fromRequest', ['@bfy_adapter.http_foundation.request']]
