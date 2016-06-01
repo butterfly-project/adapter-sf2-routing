@@ -16,7 +16,7 @@ services:
     arguments:  ['@bfy_adapter.sf2_routing.routes', '@bfy_adapter.sf2_routing.request_context']
 
   bfy_adapter.sf2_routing.routes:
-    factoryMethod:  ['@bfy_adapter.sf2_routing.route_factory, createCollection']
+    factoryMethod:  ['@bfy_adapter.sf2_routing.route_factory', 'createCollection']
     arguments:      ['%bfy_adapter.sf2_routing.routing%']
 
   bfy_adapter.sf2_routing.route_factory:
