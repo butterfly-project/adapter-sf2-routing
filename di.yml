@@ -1,5 +1,6 @@
-annotations:                     []
-bfy_adapter.sf2_routing.routing: []
+annotations:                              []
+bfy_adapter.sf2_routing.routing:          []
+bfy_adapter.sf2_routing.tag_controllers:  []
 
 services:
 
@@ -23,7 +24,7 @@ services:
 
   bfy_adapter.sf2_routing.source.annotation:
     class:      'Butterfly\Adapter\Sf2Routing\RouteConfigSource\AnnotationsRoutesConfigSource'
-    arguments:  ['%annotations%']
+    arguments:  ['%bfy_adapter.sf2_routing.tag_controllers%', '%annotations%']
     tags:       'bfy_adapter.sf2_routing.source'
 
   bfy_adapter.sf2_routing.compex_route_source:
