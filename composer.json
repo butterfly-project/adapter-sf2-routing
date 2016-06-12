@@ -22,5 +22,5 @@
             "Butterfly\\Adapter\\Sf2Routing\\Tests\\": "tests/unit/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "dev"
 }
