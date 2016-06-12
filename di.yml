@@ -1,6 +1,6 @@
 annotations:                              []
 bfy_adapter.sf2_routing.routing:          []
-bfy_adapter.sf2_routing.tag_controllers:  []
+bfy_adapter.sf2_routing.tag_controllers:  'http.controllers'
 
 services:
 
