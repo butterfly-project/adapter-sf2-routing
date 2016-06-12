@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+2.0.x-dev
+---------
+
+Added functionality:
+
+ * Added annotations configuration support
+
 1.2.2
 -----
 

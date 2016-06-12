@@ -1,3 +1,4 @@
+annotations:                     []
 bfy_adapter.sf2_routing.routing: []
 
 services:
@@ -15,9 +16,23 @@ services:
     class:      'Symfony\Component\Routing\Generator\UrlGenerator'
     arguments:  ['@bfy_adapter.sf2_routing.routes', '@bfy_adapter.sf2_routing.request_context']
 
+  bfy_adapter.sf2_routing.source.simple:
+    class:      'Butterfly\Adapter\Sf2Routing\RouteConfigSource\SimpleRoutesConfigSource'
+    arguments:  ['%bfy_adapter.sf2_routing.routing%']
+    tags:       'bfy_adapter.sf2_routing.source'
+
+  bfy_adapter.sf2_routing.source.annotation:
+    class:      'Butterfly\Adapter\Sf2Routing\RouteConfigSource\AnnotationsRoutesConfigSource'
+    arguments:  ['%annotations%']
+    tags:       'bfy_adapter.sf2_routing.source'
+
+  bfy_adapter.sf2_routing.compex_route_source:
+    class:      'Butterfly\Adapter\Sf2Routing\RouteConfigSource\ComplexRoutesConfigSource'
+    arguments:  ['#bfy_adapter.sf2_routing.source/toArray']
+
   bfy_adapter.sf2_routing.routes:
     factoryMethod:  ['@bfy_adapter.sf2_routing.route_factory', 'createCollection']
-    arguments:      ['%bfy_adapter.sf2_routing.routing%']
+    arguments:      ['@bfy_adapter.sf2_routing.compex_route_source']
 
   bfy_adapter.sf2_routing.route_factory:
     class:      'Butterfly\Adapter\Sf2Routing\RouteFactory'
