@@ -215,4 +215,45 @@ class AnnotationsRoutesConfigSourceTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(array(), $source->getConfig());
     }
 
+    public function testGetConfigIfNoControllerServiceAnnotation()
+    {
+        $allAnnotations = array(
+            'ProductController' => array(
+                'class'   => array(
+                    'service' => '',
+                    'tags'    => 'controllers'
+                ),
+                'methods' => array(
+                    'indexAction' => array(
+                        'route\url'          => '/products/index',
+                        'route\defaults'     => array('id' => 123),
+                        'route\requirements' => array('id' => '\d+'),
+                        'route\options'      => array('a', 'b'),
+                        'route\host'         => 'localhost',
+                        'route\schemes'      => array('http', 'https'),
+                        'route\methods'      => array('POST', 'GET'),
+                    ),
+                )
+            ),
+        );
+
+        $source = new AnnotationsRoutesConfigSource('controllers', $allAnnotations);
+
+        $expectedConfig = array(
+            'productcontroller:index' => array(
+                'pattern'      => '/products/index',
+                'defaults'     => array(
+                    'id'          => 123,
+                    '_controller' => 'productcontroller:index',
+                ),
+                'requirements' => array('id' => '\d+'),
+                'options'      => array('a', 'b'),
+                'host'         => 'localhost',
+                'schemes'      => array('http', 'https'),
+                'methods'      => array('POST', 'GET'),
+            )
+        );
+
+        $this->assertEquals($expectedConfig, $source->getConfig());
+    }
 }

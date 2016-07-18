@@ -15,7 +15,7 @@ class AnnotationsRoutesConfigSource implements IRoutesConfigSource
      */
     public function __construct($controllerTagName, array $allAnnotations)
     {
-        foreach ($allAnnotations as $annotations) {
+        foreach ($allAnnotations as $class => $annotations) {
             if (!$this->isController($annotations['class'], $controllerTagName)) {
                 continue;
             }
@@ -29,7 +29,8 @@ class AnnotationsRoutesConfigSource implements IRoutesConfigSource
                     continue;
                 }
 
-                $routeName = $this->getRouteName($annotations['class'], $methodName);
+                $controllerServiceName = !empty($annotations['class']['service']) ? $annotations['class']['service'] : strtolower($class);
+                $routeName = $this->getRouteName($controllerServiceName, $methodName);
 
                 $config = array(
                     'pattern' => $methodAnnotations['route\url'],
@@ -74,14 +75,14 @@ class AnnotationsRoutesConfigSource implements IRoutesConfigSource
     }
 
     /**
-     * @param array $classAnnotations
+     * @param string $controllerName
      * @param string $methodName
      * @return string
      */
-    protected function getRouteName(array $classAnnotations, $methodName)
+    protected function getRouteName($controllerName, $methodName)
     {
         return implode(':', array(
-            $classAnnotations['service'],
+            $controllerName,
             str_replace('Action', '', $methodName),
         ));
     }

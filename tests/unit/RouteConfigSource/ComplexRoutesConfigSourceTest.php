@@ -47,6 +47,6 @@ class ComplexRoutesConfigSourceTest extends \PHPUnit_Framework_TestCase
      */
     protected function getRouteConfigSource()
     {
-        return $this->getMock('Butterfly\Adapter\Sf2Routing\RouteConfigSource\IRoutesConfigSource');
+        return $this->createMock('Butterfly\Adapter\Sf2Routing\RouteConfigSource\IRoutesConfigSource');
     }
 }
