@@ -42,3 +42,8 @@ services:
     class:      'Symfony\Component\Routing\RequestContext'
     calls:
       - ['fromRequest', ['@bfy_adapter.http_foundation.request']]
+
+  bfy_adapter.sf2_routing.request_context:
+    class:      'Symfony\Component\Routing\Twig\UrlGeneratorTwigExtension'
+    arguments:  ['@bfy_adapter.sf2_routing.url_generator']
+    tags:       'bfy_adapter.twig.extensions'

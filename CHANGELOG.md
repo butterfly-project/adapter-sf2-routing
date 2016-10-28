@@ -1,12 +1,13 @@
 CHANGELOG
 =========
 
-2.0.x-dev
+2.0.0
 ---------
 
 Added functionality:
 
  * Added annotations configuration support
+ * Added twig extension for url generate
 
 1.2.2
 -----
