@@ -13,8 +13,11 @@
     "require": {
         "php": ">=5.3.3",
 
-        "symfony/routing": "2.6.*",
-        "butterfly/app-request-response": "1.1.*"
+        "symfony/routing": "*",
+        "butterfly/app-request-response": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.5"
     },
     "autoload": {
         "psr-4": {

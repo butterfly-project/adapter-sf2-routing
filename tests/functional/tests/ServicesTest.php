@@ -14,6 +14,7 @@ class ServicesTest extends BaseDiTest
     public function getDataForTestParameter()
     {
         return array(
+            array('annotations', array()),
             array('bfy_adapter.sf2_routing.routing', array()),
         );
     }
@@ -31,6 +32,9 @@ class ServicesTest extends BaseDiTest
     public function getDataForTestService()
     {
         return array(
+            array('bfy_adapter.sf2_routing.source.simple'),
+            array('bfy_adapter.sf2_routing.source.annotation'),
+            array('bfy_adapter.sf2_routing.compex_route_source'),
             array('bfy_adapter.sf2_routing.request_context'),
             array('bfy_adapter.sf2_routing.route_factory'),
             array('bfy_adapter.sf2_routing.routes'),

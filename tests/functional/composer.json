@@ -7,13 +7,14 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "butterfly/packages": "1.2.*",
+        "butterfly/packages": "2.0.x-dev",
 
-        "butterfly/adapter-sf2-routing": "dev-dev"
+        "butterfly/adapter-sf2-routing": "2.0.x-dev"
     },
     "autoload": {
         "psr-4": {
             "Butterfly\\Tests\\": "tests/"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }

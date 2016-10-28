@@ -2,6 +2,7 @@
 
 namespace Butterfly\Adapter\Sf2Routing;
 
+use Butterfly\Adapter\Sf2Routing\RouteConfigSource\IRoutesConfigSource;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
@@ -11,11 +12,13 @@ use Symfony\Component\Routing\RouteCollection;
 class RouteFactory
 {
     /**
-     * @param array $configuration
+     * @param IRoutesConfigSource $configSource
      * @return RouteCollection
      */
-    public function createCollection(array $configuration)
+    public function createCollection(IRoutesConfigSource $configSource)
     {
+        $configuration = $configSource->getConfig();
+
         $routes = new RouteCollection();
 
         foreach ($configuration as $routeName => $routeConfig) {
